@@ -1,0 +1,31 @@
+
+@author: Gabriela Georgieva, 2130120G
+
+I chose to implement the following extension:
+When the user tries to delete an Employee, a confirmation dialog will pop up on the screen.
+
+In order to do this, I used JOptionPane(in particular, its method showConfirmDialog) to alter the behaviour of the deleteButton event.
+This is how the deleteButton part of my code looks like now: 
+
+###
+if (source == deleteButton) {
+	Employee selected = employeeList.getSelectedValue();
+	if (selected != null) {
+		int response = JOptionPane.showConfirmDialog(this, "Are you sure you want to delete this employee?");
+		if (response == 0){
+			listModel.removeElement(selected);
+		}
+	}
+}
+###
+
+Before this extension I just had to check that an employee has been selected and then delete this element from the list.
+
+After the extension has been implemented, when the delete button is clicked and an employee has been selected, a confirmation dialog
+	pops up on the screen saying "Are you sure you want to delete this employee?". The response of the user is then recorded and
+	evaluated. Only when this response is "Yes" (the first choice, which is the 0-th button), the selected employee will be
+	removed from the list.
+
+When run with the test cases java file for EmployeeManager, the new dialog appears. YES must be pressed in order to check if the
+employee has been deleted. If No/Cancel is pressed, an error occurs as the event does not actually happen and so, the delete button
+test fails. 
